@@ -4,38 +4,50 @@
 
 | Version | Supported          |
 | ------- | ------------------ |
-| 1.2.x   | :white_check_mark: |
-| 1.1.x   | :white_check_mark: |
-| 1.0.x   | :x:                |
+| 1.x.x   | :white_check_mark: |
+| < 1.0   | :x:                |
 
 ## Reporting a Vulnerability
 
-Please report security vulnerabilities via email to: security@muhittincamdali.com
+We take the security of SwiftRouter seriously. If you have discovered a security vulnerability, we appreciate your help in disclosing it to us in a responsible manner.
 
-**Do NOT open public issues for security vulnerabilities.**
+### How to Report
 
-### Response Timeline
+**Please do not report security vulnerabilities through public GitHub issues.**
 
-- Initial Response: 48 hours
-- Status Update: 5 business days
-- Resolution: Based on severity
+Instead, please report them via email to the repository owner. You can find contact information on the GitHub profile.
 
-## Security Considerations
+Please include the following information:
 
-SwiftShaders runs Metal shaders on the GPU. While Metal provides sandboxed execution, users should:
+- Type of issue (e.g., deep link injection, state manipulation, etc.)
+- Full paths of source file(s) related to the manifestation of the issue
+- The location of the affected source code (tag/branch/commit or direct URL)
+- Any special configuration required to reproduce the issue
+- Step-by-step instructions to reproduce the issue
+- Proof-of-concept or exploit code (if possible)
+- Impact of the issue, including how an attacker might exploit it
 
-1. Only use shaders from trusted sources
-2. Avoid loading external shader code at runtime
-3. Be aware of GPU memory usage with complex effects
+### What to Expect
 
-## Best Practices
+- A confirmation of receipt within 48 hours
+- An assessment of the vulnerability within 7 days
+- Regular updates on our progress
+- Credit for responsible disclosure (if desired)
 
-```swift
-// ✅ Safe: Using built-in shaders
-view.gaussianBlur(radius: 10)
+## Security Best Practices
 
-// ⚠️ Caution: Custom shader compilation
-// Only compile trusted shader sources
-```
+When using SwiftRouter in your projects:
 
-Thank you for helping keep SwiftShaders secure! 🛡️
+1. **Validate Deep Links** - Always validate URL parameters before navigation
+2. **Use Route Guards** - Implement authentication guards for protected routes
+3. **Sanitize Parameters** - Never trust user input from URL parameters
+4. **Audit Navigation Paths** - Review which screens are accessible via deep links
+
+## Security Features
+
+SwiftRouter includes several security considerations:
+
+- **Type-Safe Parameters** - Reduces injection risks
+- **Route Guards** - Authentication/authorization interceptors
+- **URL Validation** - Built-in URL parsing with validation
+- **No External Dependencies** - Minimal attack surface
