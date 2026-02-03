@@ -1,105 +1,80 @@
-# Contributing to SwiftShaders
+# Contributing to SwiftRouter
 
-Thank you for your interest in contributing to SwiftShaders! 🎨
+First off, thank you for considering contributing to SwiftRouter! It's people like you that make SwiftRouter such a great tool.
 
-## Getting Started
+## Code of Conduct
 
-1. Fork the repository
-2. Clone your fork: `git clone https://github.com/YOUR_USERNAME/SwiftShaders.git`
-3. Create a branch: `git checkout -b feature/your-feature`
-4. Make your changes
-5. Test thoroughly
-6. Submit a pull request
+This project and everyone participating in it is governed by our Code of Conduct. By participating, you are expected to uphold this code.
+
+## How Can I Contribute?
+
+### Reporting Bugs
+
+Before creating bug reports, please check the existing issues as you might find out that you don't need to create one. When you are creating a bug report, please include as many details as possible:
+
+- **Use a clear and descriptive title**
+- **Describe the exact steps which reproduce the problem**
+- **Provide specific examples to demonstrate the steps**
+- **Describe the behavior you observed after following the steps**
+- **Explain which behavior you expected to see instead and why**
+- **Include Swift version and OS version**
+
+### Suggesting Enhancements
+
+Enhancement suggestions are tracked as GitHub issues. When creating an enhancement suggestion, please include:
+
+- **Use a clear and descriptive title**
+- **Provide a step-by-step description of the suggested enhancement**
+- **Provide specific examples to demonstrate the steps**
+- **Describe the current behavior and explain which behavior you expected to see instead**
+- **Explain why this enhancement would be useful**
+
+### Pull Requests
+
+1. Fork the repo and create your branch from `main`
+2. If you've added code that should be tested, add tests
+3. If you've changed APIs, update the documentation
+4. Ensure the test suite passes
+5. Make sure your code follows the existing style (SwiftLint)
+6. Issue that pull request!
 
 ## Development Setup
 
 ```bash
-git clone https://github.com/muhittincamdali/SwiftShaders.git
-cd SwiftShaders
+# Clone your fork
+git clone https://github.com/YOUR_USERNAME/SwiftRouter.git
+
+# Navigate to the project
+cd SwiftRouter
+
+# Open in Xcode
 open Package.swift
+
+# Run tests
+swift test
 ```
 
-### Requirements
+## Style Guide
 
-- Xcode 15.0+
-- Swift 5.9+
-- iOS 15.0+ / macOS 12.0+
+- Follow [Swift API Design Guidelines](https://swift.org/documentation/api-design-guidelines/)
+- Use SwiftLint for code style consistency
+- Write meaningful commit messages following [Conventional Commits](https://www.conventionalcommits.org/)
+- Document public APIs with DocC-compatible comments
 
-## Creating New Shaders
+## Commit Messages
 
-### 1. Create the Metal Shader
+We follow the [Conventional Commits](https://www.conventionalcommits.org/) specification:
 
-```metal
-// Shaders/YourShader.metal
-#include <metal_stdlib>
-using namespace metal;
+- `feat:` A new feature
+- `fix:` A bug fix
+- `docs:` Documentation only changes
+- `style:` Code style changes (formatting, semicolons, etc)
+- `refactor:` Code change that neither fixes a bug nor adds a feature
+- `test:` Adding missing tests
+- `chore:` Changes to the build process or auxiliary tools
 
-[[stitchable]] half4 yourShader(
-    float2 position,
-    half4 color,
-    float intensity
-) {
-    // Your shader implementation
-    return color;
-}
-```
+Example: `feat(deeplink): add universal link support`
 
-### 2. Create the SwiftUI Modifier
+## License
 
-```swift
-// Sources/SwiftShaders/Modifiers/YourShaderModifier.swift
-import SwiftUI
-
-extension View {
-    public func yourShader(intensity: Double = 1.0) -> some View {
-        self.colorEffect(
-            ShaderLibrary.yourShader(.float(intensity))
-        )
-    }
-}
-```
-
-### 3. Add Tests
-
-```swift
-// Tests/SwiftShadersTests/YourShaderTests.swift
-import XCTest
-@testable import SwiftShaders
-
-final class YourShaderTests: XCTestCase {
-    func testShaderExists() {
-        XCTAssertNotNil(ShaderLibrary.yourShader)
-    }
-}
-```
-
-### 4. Add Documentation
-
-Document your shader in `Documentation/Shaders/YourShader.md`:
-
-- Description of the effect
-- Parameters and their ranges
-- Usage examples
-- Performance considerations
-
-## Code Style
-
-- Follow Swift API Design Guidelines
-- Use meaningful variable names
-- Comment complex Metal code
-- Add `#Preview` for visual testing
-
-## Pull Request Checklist
-
-- [ ] Shader compiles without errors
-- [ ] Tests pass
-- [ ] Documentation added
-- [ ] Example added to gallery
-- [ ] No performance regressions
-- [ ] CHANGELOG updated
-
-## Questions?
-
-Open an issue with the `question` label.
-
-Thank you for contributing! 🙏
+By contributing, you agree that your contributions will be licensed under the MIT License.

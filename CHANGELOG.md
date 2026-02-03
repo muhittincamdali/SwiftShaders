@@ -8,54 +8,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- New bloom shader effect
-- Chromatic aberration improvements
+- visionOS navigation support
 
-## [1.2.0] - 2026-02-06
-
-### Added
-- `GaussianBlur` shader with configurable radius
-- `MotionBlur` directional blur effect
-- `Pixelate` retro pixel art effect
-- `Vignette` cinematic edge darkening
-- `ColorGrading` professional color correction
-- `Distortion` wave and ripple effects
-- `Glow` neon-style glow shader
-- `Noise` film grain and static effects
-- iOS 26 Liquid Glass integration
-
-### Changed
-- Improved Metal shader compilation
-- Optimized GPU memory usage
-- Enhanced color accuracy
-
-### Fixed
-- Memory leak in shader pipeline
-- Edge artifacts on certain effects
-
-## [1.1.0] - 2026-01-15
+## [1.0.0] - 2024-01-15
 
 ### Added
-- `Bloom` shader for light bleed effect
-- `ChromaticAberration` color fringing
-- `Halftone` comic book dots effect
-- `Grayscale` with multiple algorithms
-- `Sepia` vintage tone effect
-- Shader preview gallery
+- Type-safe navigation with compile-time checks
+- SwiftUI NavigationStack integration
+- Deep linking support with URL parsing
+- Tab bar coordination
+- Modal presentation handling
+- Navigation state persistence
+- Route parameters with type safety
+- Navigation interceptors (guards)
+- Animated transitions
+- Back stack management
+- Child router support (coordinator pattern)
 
-### Changed
-- Refactored shader architecture
-- Improved performance on older devices
+### Features
+- Zero dependencies
+- Protocol-oriented design
+- Full async/await support
 
-## [1.0.0] - 2026-01-01
-
-### Added
-- Initial release with 15 Metal shaders
-- SwiftUI view modifier integration
-- Example application
-- Full documentation
-
-[Unreleased]: https://github.com/muhittincamdali/SwiftShaders/compare/v1.2.0...HEAD
-[1.2.0]: https://github.com/muhittincamdali/SwiftShaders/compare/v1.1.0...v1.2.0
-[1.1.0]: https://github.com/muhittincamdali/SwiftShaders/compare/v1.0.0...v1.1.0
-[1.0.0]: https://github.com/muhittincamdali/SwiftShaders/releases/tag/v1.0.0
+[Unreleased]: https://github.com/muhittincamdali/SwiftRouter/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/muhittincamdali/SwiftRouter/releases/tag/v1.0.0
