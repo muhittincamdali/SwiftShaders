@@ -1,45 +1,132 @@
-<div align="center">
+<p align="center">
+  <img src="Assets/logo.png" alt="SwiftShaders" width="200"/>
+</p>
 
-# 🎨 SwiftShaders
+<h1 align="center">SwiftShaders</h1>
 
-**30+ custom Metal shaders as SwiftUI view modifiers**
+<p align="center">
+  <strong>🎨 30+ custom Metal shaders as SwiftUI view modifiers</strong>
+</p>
 
-[![Swift](https://img.shields.io/badge/Swift-5.9+-F05138?style=for-the-badge&logo=swift&logoColor=white)](https://swift.org)
-[![iOS](https://img.shields.io/badge/iOS-17.0+-000000?style=for-the-badge&logo=apple&logoColor=white)](https://developer.apple.com/ios/)
-[![SPM](https://img.shields.io/badge/SPM-Compatible-FA7343?style=for-the-badge&logo=swift&logoColor=white)](https://swift.org/package-manager/)
-[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
-
-</div>
-
----
-
-## ✨ Features
-
-- 🎨 **30+ Shaders** — Blur, glow, ripple, distortion
-- 📱 **SwiftUI Native** — View modifiers
-- ⚡ **GPU Powered** — 60fps performance
-- 🎛️ **Customizable** — All parameters exposed
-- 🌈 **Color Effects** — Hue, saturation, contrast
+<p align="center">
+  <img src="https://img.shields.io/badge/Swift-6.0-orange.svg" alt="Swift"/>
+  <img src="https://img.shields.io/badge/iOS-17.0+-blue.svg" alt="iOS"/>
+</p>
 
 ---
 
-## 🚀 Quick Start
+## Why SwiftShaders?
+
+Metal shaders are powerful but require low-level knowledge. **SwiftShaders** packages beautiful effects as simple SwiftUI modifiers.
+
+```swift
+Image("photo")
+    .shader(.hologram)
+    .shader(.glitch(intensity: 0.3))
+    .shader(.chromaticAberration(offset: 5))
+```
+
+## Available Shaders
+
+### Visual Effects
+
+| Shader | Description |
+|--------|-------------|
+| `.hologram` | Holographic rainbow effect |
+| `.glitch` | Digital glitch distortion |
+| `.pixelate` | Retro pixel effect |
+| `.vhs` | VHS tape distortion |
+| `.crt` | CRT monitor effect |
+| `.ascii` | ASCII art conversion |
+
+### Color Effects
+
+| Shader | Description |
+|--------|-------------|
+| `.chromaticAberration` | RGB split |
+| `.duotone` | Two-color filter |
+| `.hueRotate` | Color shift |
+| `.posterize` | Reduce colors |
+| `.invert` | Negative effect |
+
+### Blur & Distortion
+
+| Shader | Description |
+|--------|-------------|
+| `.motionBlur` | Directional blur |
+| `.zoomBlur` | Radial zoom blur |
+| `.ripple` | Water ripple |
+| `.wave` | Wave distortion |
+| `.barrel` | Barrel distortion |
+
+### Lighting
+
+| Shader | Description |
+|--------|-------------|
+| `.glow` | Soft glow |
+| `.neon` | Neon light effect |
+| `.emboss` | 3D emboss |
+| `.spotlight` | Focused light |
+
+## Usage
 
 ```swift
 import SwiftShaders
 
 struct ContentView: View {
+    @State var glitchIntensity = 0.0
+    
     var body: some View {
-        Image("photo")
-            .glowEffect(color: .blue, radius: 10)
-            .rippleEffect(origin: .center, time: time)
-            .pixelateEffect(scale: 8)
+        Image("hero")
+            .shader(.hologram)
+            .shader(.glitch(intensity: glitchIntensity))
+            .animation(.default, value: glitchIntensity)
     }
 }
 ```
 
----
+## Customization
 
-## 📄 License
+```swift
+// Glitch with custom parameters
+.shader(.glitch(
+    intensity: 0.5,
+    speed: 2.0,
+    blockSize: 10
+))
 
-MIT • [@muhittincamdali](https://github.com/muhittincamdali)
+// Ripple from touch point
+.shader(.ripple(
+    center: touchPoint,
+    amplitude: 20,
+    frequency: 10
+))
+```
+
+## Animation
+
+```swift
+// Animate shader parameters
+TimelineView(.animation) { timeline in
+    Image("photo")
+        .shader(.wave(
+            time: timeline.date.timeIntervalSinceReferenceDate,
+            amplitude: 10
+        ))
+}
+```
+
+## Performance
+
+- GPU-accelerated
+- 60fps guaranteed
+- Minimal battery impact
+- Automatic quality scaling
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## License
+
+MIT License
