@@ -5,7 +5,7 @@
 <h1 align="center">SwiftShaders</h1>
 
 <p align="center">
-  <strong>🎨 33 Production-Ready Metal Shaders as SwiftUI View Modifiers</strong>
+  <strong>🎨 34 Production-Ready Metal Shaders as SwiftUI View Modifiers</strong>
 </p>
 
 <p align="center">
@@ -17,7 +17,7 @@
 
 <p align="center">
   <a href="#installation">Installation</a> •
-  <a href="#all-33-shaders">All Shaders</a> •
+  <a href="#all-34-shaders">All Shaders</a> •
   <a href="#usage">Usage</a> •
   <a href="#performance">Performance</a>
 </p>
@@ -26,7 +26,7 @@
 
 ## ✨ Why SwiftShaders?
 
-Metal shaders are incredibly powerful for creating stunning visual effects, but they require deep GPU programming knowledge. **SwiftShaders** packages **33 production-ready effects** as simple SwiftUI view modifiers.
+Metal shaders are incredibly powerful for creating stunning visual effects, but they require deep GPU programming knowledge. **SwiftShaders** packages **34 production-ready effects** as simple SwiftUI view modifiers.
 
 ```swift
 import SwiftShaders
@@ -47,7 +47,7 @@ dependencies: [
 ]
 ```
 
-## 🎨 All 33 Shaders
+## 🎨 All 34 Shaders
 
 ### 🌈 Visual Effects (8)
 
