@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="Assets/logo.png" alt="SwiftShaders" width="200"/>
-</p>
-
 <h1 align="center">SwiftShaders</h1>
 
 <p align="center">
