@@ -35,7 +35,7 @@ is a new major version.
 - Argument checks for every public parameter: ranges are clamped, NaN switches an effect off,
   angles, positions and times are kept to values a 32-bit float can hold, sample offsets are
   limited to the view's diagonal, and gradient maps use at most 256 colors.
-- 75 Swift Testing tests that render the effects and check their pixels on macOS and on an iOS
+- 76 Swift Testing tests that render the effects and check their pixels on macOS and on an iOS
   simulator, including tests for NaN, infinite and huge arguments and a test that compares the
   compiled Metal library with the functions the Swift code calls.
 - DocC catalog with three articles (Getting Started, Animating Effects, How Effects Are
