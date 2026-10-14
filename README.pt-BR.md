@@ -1,4 +1,4 @@
-<!-- i18n-source: README.md@cd2380b7514c5fc84e4c876d40098c1bde7d6458 status=reviewed -->
+<!-- i18n-source: README.md@e5aa36d652a38b1460dd898f7b854b35ee4acfa6 status=reviewed -->
 <!-- brand:start -->
 
 <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftShaders/main/.github/brand/banner-pt-BR-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftShaders/main/.github/brand/banner-pt-BR-light.svg"><img src="https://raw.githubusercontent.com/muhittincamdali/SwiftShaders/main/.github/brand/banner-pt-BR-light.svg" alt="SwiftShaders: Efeitos de shaders Metal para views SwiftUI: cor, desfoque, distorção, ondulações e transições."></picture></p>
@@ -35,7 +35,7 @@ Um pacote Swift de efeitos de GPU para SwiftUI no iOS 17+ e no macOS 14+: efeito
 - **Argumentos que não quebram um shader** — os valores são limitados aos seus intervalos, um NaN desativa o efeito, ângulos, posições e tempos são mantidos em valores que um float de 32 bits comporta, e nenhum argumento pode fazer o SwiftUI alocar uma camada offscreen maior que a view somada à sua diagonal.
 - **Bordas limpas** — efeitos que comparam pixels vizinhos leem apenas dentro da view, então uma view com nitidez, relevo ou aspecto de esboço não ganha borda escura nem clara, e os efeitos de cor preservam o alfa suavizado de textos e símbolos.
 - **Reduzir Movimento (Reduce Motion)** — com o ajuste ativado, os efeitos animados param no primeiro quadro e as ondulações ignoram os toques.
-- **Pixels testados** — 76 testes do Swift Testing renderizam os efeitos com `ImageRenderer` e comparam os pixels com valores calculados em Swift, no macOS e em um simulador de iPhone. Outro teste carrega a biblioteca Metal compilada e verifica se ela contém exatamente as funções que o código Swift chama.
+- **Pixels testados** — 77 testes do Swift Testing rodam no macOS e em um simulador de iPhone. 61 deles renderizam os efeitos com `ImageRenderer` e comparam os pixels com valores calculados em Swift, 14 verificam como os argumentos e o tempo de animação são convertidos, e 2 carregam a biblioteca Metal compilada e verificam se ela contém exatamente as funções que o código Swift chama.
 - **Exemplos que compilam** — cada exemplo abaixo vem do [app de exemplo](Examples/ShaderGallery), que a CI compila para iOS e macOS, e os testes renderizam cada um deles.
 
 ### O que está incluído

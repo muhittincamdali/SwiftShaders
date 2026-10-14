@@ -1,4 +1,4 @@
-<!-- i18n-source: README.md@cd2380b7514c5fc84e4c876d40098c1bde7d6458 status=reviewed -->
+<!-- i18n-source: README.md@e5aa36d652a38b1460dd898f7b854b35ee4acfa6 status=reviewed -->
 <!-- brand:start -->
 
 <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftShaders/main/.github/brand/banner-ko-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftShaders/main/.github/brand/banner-ko-light.svg"><img src="https://raw.githubusercontent.com/muhittincamdali/SwiftShaders/main/.github/brand/banner-ko-light.svg" alt="SwiftShaders: SwiftUI 뷰를 위한 Metal 셰이더 효과: 색상, 블러, 왜곡, 물결, 전환."></picture></p>
@@ -35,7 +35,7 @@ iOS 17+와 macOS 14+의 SwiftUI를 위한 GPU 효과 Swift 패키지입니다. s
 - **셰이더를 망가뜨릴 수 없는 인자** — 값은 허용 범위로 제한되고, NaN은 효과를 끄며, 각도·위치·시간은 32비트 float가 표현할 수 있는 값으로 유지됩니다. 또한 어떤 인자를 넘기더라도 SwiftUI가 뷰와 그 대각선을 합한 크기보다 큰 오프스크린 레이어를 할당하는 일은 없습니다.
 - **깔끔한 가장자리** — 이웃한 픽셀을 비교하는 효과는 뷰 안쪽만 읽으므로, 선명하게 하거나 엠보스 또는 스케치 효과를 준 뷰에 어둡거나 밝은 테두리가 생기지 않습니다. 색상 효과는 텍스트와 심볼의 안티앨리어싱된 알파도 그대로 유지합니다.
 - **동작 줄이기(Reduce Motion)** — 이 설정이 켜져 있으면 애니메이션 효과는 첫 프레임에서 멈추고 물결은 탭을 무시합니다.
-- **픽셀 단위 테스트** — Swift Testing 테스트 76개가 `ImageRenderer`로 효과를 렌더링하고 픽셀을 Swift에서 계산한 값과 비교하며, macOS와 iPhone 시뮬레이터에서 실행됩니다. 또 다른 테스트는 컴파일된 Metal 라이브러리를 불러와 Swift 코드가 호출하는 함수가 정확히 들어 있는지 확인합니다.
+- **픽셀 단위 테스트** — Swift Testing 테스트 77개가 macOS와 iPhone 시뮬레이터에서 실행됩니다. 그중 61개는 `ImageRenderer`로 효과를 렌더링하고 픽셀을 Swift에서 계산한 값과 비교하고, 14개는 인수와 애니메이션 시간이 어떻게 변환되는지 확인하며, 2개는 컴파일된 Metal 라이브러리를 불러와 Swift 코드가 호출하는 함수가 정확히 들어 있는지 확인합니다.
 - **컴파일되는 샘플** — 아래의 모든 샘플은 CI가 iOS와 macOS용으로 빌드하는 [예제 앱](Examples/ShaderGallery)에서 가져온 것이며, 테스트에서도 각 샘플을 렌더링합니다.
 
 ### 포함된 항목

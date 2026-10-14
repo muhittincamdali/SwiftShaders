@@ -1,4 +1,4 @@
-<!-- i18n-source: README.md@cd2380b7514c5fc84e4c876d40098c1bde7d6458 status=reviewed -->
+<!-- i18n-source: README.md@e5aa36d652a38b1460dd898f7b854b35ee4acfa6 status=reviewed -->
 <!-- brand:start -->
 
 <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftShaders/main/.github/brand/banner-zh-CN-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftShaders/main/.github/brand/banner-zh-CN-light.svg"><img src="https://raw.githubusercontent.com/muhittincamdali/SwiftShaders/main/.github/brand/banner-zh-CN-light.svg" alt="SwiftShaders: 适用于 SwiftUI 视图的 Metal 着色器效果：颜色、模糊、扭曲、涟漪和过渡。"></picture></p>
@@ -35,7 +35,7 @@
 - **不会弄坏 shader 的参数** — 数值会被限制在取值范围内，NaN 会关闭对应特效，角度、位置和时间会被限制在 32 位 float 能够表示的范围内，任何参数都不会导致 SwiftUI 分配比视图加上其对角线更大的离屏图层。
 - **干净的边缘** — 需要比较相邻像素的特效只在视图内部读取，因此锐化、浮雕或素描效果的视图不会出现暗边或亮边，颜色特效也会保留文字和符号经过抗锯齿的 alpha。
 - **减弱动态效果（Reduce Motion）** — 开启该设置后，动画特效会停在第一帧，涟漪也会忽略点击。
-- **经过测试的像素** — 76 个 Swift Testing 测试使用 `ImageRenderer` 渲染特效，并将像素与在 Swift 中计算出的值进行比较，测试在 macOS 和 iPhone 模拟器上运行。另有一个测试会加载编译后的 Metal 库，并检查其中恰好包含 Swift 代码所调用的那些函数。
+- **经过测试的像素** — 77 个 Swift Testing 测试在 macOS 和 iPhone 模拟器上运行。其中 61 个使用 `ImageRenderer` 渲染特效，并将像素与在 Swift 中计算出的值进行比较；14 个检查参数和动画时间的转换方式；2 个加载编译后的 Metal 库，并检查其中恰好包含 Swift 代码所调用的那些函数。
 - **可编译的示例** — 下面的每个示例都来自[示例应用](Examples/ShaderGallery)，CI 会为 iOS 和 macOS 构建它，测试也会渲染其中的每一个示例。
 
 ### 包含的内容

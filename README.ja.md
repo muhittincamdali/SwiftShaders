@@ -1,4 +1,4 @@
-<!-- i18n-source: README.md@cd2380b7514c5fc84e4c876d40098c1bde7d6458 status=reviewed -->
+<!-- i18n-source: README.md@e5aa36d652a38b1460dd898f7b854b35ee4acfa6 status=reviewed -->
 <!-- brand:start -->
 
 <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftShaders/main/.github/brand/banner-ja-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftShaders/main/.github/brand/banner-ja-light.svg"><img src="https://raw.githubusercontent.com/muhittincamdali/SwiftShaders/main/.github/brand/banner-ja-light.svg" alt="SwiftShaders: SwiftUI ビュー向けの Metal シェーダー効果。色、ぼかし、歪み、波紋、トランジション。"></picture></p>
@@ -35,7 +35,7 @@ iOS 17+ と macOS 14+ の SwiftUI 向け GPU エフェクトを集めた Swift �
 - **シェーダーを壊せない引数** — 値は範囲内に収められ、NaN はエフェクトをオフにし、角度、位置、時間は 32 ビット float で表せる値に保たれ、どの引数を渡してもビューとその対角線を足した大きさを超えるオフスクリーンレイヤーを SwiftUI に確保させることはありません。
 - **きれいな縁** — 隣接するピクセルを比較するエフェクトはビューの内側だけを読み取るため、シャープ、エンボス、スケッチを適用したビューに暗い縁や明るい縁は付きません。カラーエフェクトは、テキストやシンボルのアンチエイリアスされたアルファも保ちます。
 - **視差効果を減らす（Reduce Motion）** — この設定がオンのとき、アニメーションするエフェクトは最初のフレームで止まり、波紋はタップを無視します。
-- **ピクセルまでテスト** — 76 個の Swift Testing テストが `ImageRenderer` でエフェクトを描画し、Swift で計算した値とピクセルを比較します。テストは macOS と iPhone シミュレーターで実行されます。別のテストでは、コンパイル済みの Metal ライブラリを読み込み、Swift コードが呼び出す関数がちょうどそのまま含まれていることを確認します。
+- **ピクセルまでテスト** — 77 個の Swift Testing テストが macOS と iPhone シミュレーターで実行されます。そのうち 61 個は `ImageRenderer` でエフェクトを描画し、Swift で計算した値とピクセルを比較します。14 個は引数とアニメーション時間の変換を確認し、2 個はコンパイル済みの Metal ライブラリを読み込んで、Swift コードが呼び出す関数がちょうどそのまま含まれていることを確認します。
 - **コンパイルできるサンプル** — 以下のサンプルはすべて[サンプルアプリ](Examples/ShaderGallery)のコードです。サンプルアプリは CI が iOS と macOS 向けにビルドし、テストでもそれぞれを描画します。
 
 ### 含まれるもの

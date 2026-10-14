@@ -35,9 +35,10 @@ is a new major version.
 - Argument checks for every public parameter: ranges are clamped, NaN switches an effect off,
   angles, positions and times are kept to values a 32-bit float can hold, sample offsets are
   limited to the view's diagonal, and gradient maps use at most 256 colors.
-- 76 Swift Testing tests that render the effects and check their pixels on macOS and on an iOS
-  simulator, including tests for NaN, infinite and huge arguments and a test that compares the
-  compiled Metal library with the functions the Swift code calls.
+- 77 Swift Testing tests that run on macOS and on an iOS simulator: 61 render the effects and
+  check their pixels, including with NaN, infinite and huge arguments, 14 check how arguments
+  and animation time are converted, and 2 compare the compiled Metal library with the
+  functions the Swift code calls.
 - DocC catalog with three articles (Getting Started, Animating Effects, How Effects Are
   Drawn), built and deployed to GitHub Pages by `docs.yml`.
 - `Examples/ShaderGallery`: an iOS and macOS app with every effect, the README samples, the

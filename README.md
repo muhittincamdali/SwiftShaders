@@ -44,10 +44,10 @@ they can be called directly. The package has no dependencies.
   antialiased alpha of text and symbols.
 - **Reduce Motion** — animated effects stop on their first frame and ripples ignore taps when
   the setting is on.
-- **Tested pixels** — 76 Swift Testing tests render the effects with `ImageRenderer` and
-  compare pixels with values computed in Swift, on macOS and on an iPhone simulator. Another
-  test loads the compiled Metal library and checks that it holds exactly the functions the Swift
-  code calls.
+- **Tested pixels** — 77 Swift Testing tests run on macOS and on an iPhone simulator. 61 of
+  them render the effects with `ImageRenderer` and compare pixels with values computed in Swift,
+  14 check how arguments and animation time are converted, and 2 load the compiled Metal library
+  and check that it holds exactly the functions the Swift code calls.
 - **Samples that compile** — every sample below comes from the
   [example app](Examples/ShaderGallery), which CI builds for iOS and macOS, and the tests render
   each one.

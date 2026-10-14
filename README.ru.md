@@ -1,4 +1,4 @@
-<!-- i18n-source: README.md@cd2380b7514c5fc84e4c876d40098c1bde7d6458 status=reviewed -->
+<!-- i18n-source: README.md@e5aa36d652a38b1460dd898f7b854b35ee4acfa6 status=reviewed -->
 <!-- brand:start -->
 
 <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftShaders/main/.github/brand/banner-ru-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftShaders/main/.github/brand/banner-ru-light.svg"><img src="https://raw.githubusercontent.com/muhittincamdali/SwiftShaders/main/.github/brand/banner-ru-light.svg" alt="SwiftShaders: Эффекты шейдеров Metal для представлений SwiftUI: цвет, размытие, искажения, волны и переходы."></picture></p>
@@ -35,7 +35,7 @@ Swift-пакет с GPU-эффектами для SwiftUI на iOS 17+ и macOS 
 - **Аргументы, которые не могут сломать шейдер** — значения ограничиваются своими диапазонами, NaN отключает эффект, углы, позиции и время удерживаются в пределах значений, которые вмещает 32-битный float, и ни один аргумент не заставит SwiftUI выделить offscreen-слой больше, чем представление вместе с его диагональю.
 - **Чистые края** — эффекты, сравнивающие соседние пиксели, читают только внутри представления, поэтому у представления с повышенной резкостью, рельефом или эффектом наброска нет тёмной или светлой каймы, а цветовые эффекты сохраняют сглаженный альфа-канал текста и символов.
 - **Уменьшение движения (Reduce Motion)** — когда этот параметр включён, анимированные эффекты останавливаются на первом кадре, а волны игнорируют касания.
-- **Проверка на уровне пикселей** — 76 тестов Swift Testing отрисовывают эффекты через `ImageRenderer` и сравнивают пиксели со значениями, вычисленными в Swift, на macOS и в симуляторе iPhone. Ещё один тест загружает скомпилированную библиотеку Metal и проверяет, что в ней ровно те функции, которые вызывает код на Swift.
+- **Проверка на уровне пикселей** — 77 тестов Swift Testing выполняются на macOS и в симуляторе iPhone. 61 из них отрисовывает эффекты через `ImageRenderer` и сравнивает пиксели со значениями, вычисленными в Swift, 14 проверяют, как преобразуются аргументы и время анимации, а 2 загружают скомпилированную библиотеку Metal и проверяют, что в ней ровно те функции, которые вызывает код на Swift.
 - **Примеры, которые компилируются** — каждый пример ниже взят из [демонстрационного приложения](Examples/ShaderGallery), которое CI собирает для iOS и macOS; тесты отрисовывают каждый из них.
 
 ### Что входит в пакет

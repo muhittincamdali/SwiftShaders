@@ -1,4 +1,4 @@
-<!-- i18n-source: README.md@cd2380b7514c5fc84e4c876d40098c1bde7d6458 status=reviewed -->
+<!-- i18n-source: README.md@e5aa36d652a38b1460dd898f7b854b35ee4acfa6 status=reviewed -->
 <!-- brand:start -->
 
 <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftShaders/main/.github/brand/banner-tr-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftShaders/main/.github/brand/banner-tr-light.svg"><img src="https://raw.githubusercontent.com/muhittincamdali/SwiftShaders/main/.github/brand/banner-tr-light.svg" alt="SwiftShaders: SwiftUI görünümleri için Metal shader efektleri: renk, bulanıklık, bozulma, dalgalanma ve geçişler."></picture></p>
@@ -35,7 +35,7 @@ iOS 17+ ve macOS 14+ üzerinde SwiftUI için GPU efektleri sunan bir Swift paket
 - **Shader'ı bozamayan argümanlar** — değerler kendi aralıklarına sıkıştırılır, NaN bir efekti kapatır, açılar, konumlar ve süreler 32 bitlik bir float'ın taşıyabileceği değerlerle sınırlandırılır ve hiçbir argüman SwiftUI'ın görünümün ve köşegeninin toplamından büyük bir offscreen katman ayırmasına yol açamaz.
 - **Temiz kenarlar** — komşu piksellere bakan efektler yalnızca görünümün içinden okur; bu yüzden keskinleştirilmiş, kabartılmış ya da çizim görünümüne çevrilmiş bir görünümde koyu veya parlak kenar oluşmaz, renk efektleri de metin ve sembollerin yumuşatılmış alfa değerini korur.
 - **Reduce Motion (Hareketi Azalt)** — ayar açıkken animasyonlu efektler ilk karede durur, dalgalanmalar ise dokunuşları yok sayar.
-- **Test edilmiş pikseller** — 76 Swift Testing testi, efektleri `ImageRenderer` ile çizer ve pikselleri Swift'te hesaplanan değerlerle karşılaştırır; testler macOS'ta ve bir iPhone simülatöründe çalışır. Bir başka test, derlenmiş Metal kitaplığını yükler ve içinde Swift kodunun çağırdığı fonksiyonların tam olarak bulunduğunu denetler.
+- **Test edilmiş pikseller** — 77 Swift Testing testi macOS'ta ve bir iPhone simülatöründe çalışır. Bunların 61'i efektleri `ImageRenderer` ile çizer ve pikselleri Swift'te hesaplanan değerlerle karşılaştırır, 14'ü argümanların ve animasyon zamanının nasıl dönüştürüldüğünü denetler, 2'si de derlenmiş Metal kitaplığını yükleyip içinde Swift kodunun çağırdığı fonksiyonların tam olarak bulunduğunu denetler.
 - **Derlenen örnekler** — aşağıdaki her örnek, CI'ın iOS ve macOS için derlediği [örnek uygulamadan](Examples/ShaderGallery) gelir; testler de her birini çizer.
 
 ### Neler var

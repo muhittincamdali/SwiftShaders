@@ -1,4 +1,4 @@
-<!-- i18n-source: README.md@cd2380b7514c5fc84e4c876d40098c1bde7d6458 status=reviewed -->
+<!-- i18n-source: README.md@e5aa36d652a38b1460dd898f7b854b35ee4acfa6 status=reviewed -->
 <!-- brand:start -->
 
 <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftShaders/main/.github/brand/banner-de-dark.svg"><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/muhittincamdali/SwiftShaders/main/.github/brand/banner-de-light.svg"><img src="https://raw.githubusercontent.com/muhittincamdali/SwiftShaders/main/.github/brand/banner-de-light.svg" alt="SwiftShaders: Metal-Shader-Effekte für SwiftUI-Views: Farbe, Unschärfe, Verzerrung, Wellen und Übergänge."></picture></p>
@@ -35,7 +35,7 @@ Ein Swift-Paket mit GPU-Effekten für SwiftUI auf iOS 17+ und macOS 14+: Farbeff
 - **Argumente, die keinen Shader zerstören können** — Werte werden auf ihren Bereich begrenzt, ein NaN schaltet einen Effekt aus, Winkel, Positionen und Zeiten bleiben auf Werten, die ein 32-Bit-Float fassen kann, und kein Argument kann SwiftUI dazu bringen, eine Offscreen-Ebene anzulegen, die größer ist als die View samt ihrer Diagonale.
 - **Saubere Ränder** — Effekte, die benachbarte Pixel vergleichen, lesen nur innerhalb der View. Eine geschärfte, geprägte oder skizzierte View bekommt daher keinen dunklen oder hellen Rand, und Farbeffekte behalten das geglättete Alpha von Text und Symbolen.
 - **Bewegung reduzieren (Reduce Motion)** — Animierte Effekte bleiben bei aktivierter Einstellung auf ihrem ersten Frame stehen, und Wellen ignorieren Berührungen.
-- **Getestete Pixel** — 76 Swift-Testing-Tests rendern die Effekte mit `ImageRenderer` und vergleichen die Pixel mit in Swift berechneten Werten, auf macOS und in einem iPhone-Simulator. Ein weiterer Test lädt die kompilierte Metal-Bibliothek und prüft, dass sie genau die Funktionen enthält, die der Swift-Code aufruft.
+- **Getestete Pixel** — 77 Swift-Testing-Tests laufen auf macOS und in einem iPhone-Simulator. 61 davon rendern die Effekte mit `ImageRenderer` und vergleichen die Pixel mit in Swift berechneten Werten, 14 prüfen, wie Argumente und die Animationszeit umgerechnet werden, und 2 laden die kompilierte Metal-Bibliothek und prüfen, dass sie genau die Funktionen enthält, die der Swift-Code aufruft.
 - **Beispiele, die kompilieren** — Jedes Beispiel unten stammt aus der [Beispiel-App](Examples/ShaderGallery), die CI für iOS und macOS baut; die Tests rendern jedes davon.
 
 ### Was enthalten ist
