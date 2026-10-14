@@ -163,4 +163,16 @@ struct InputSafetyTests {
         let many = (0..<1_000).map { srgb($0 % 256, 0, 0) }
         _ = try Pixels(grayRamp().gradientMap(many), width: 32, height: 8)
     }
+
+    @Test("Calling the gradient map shader directly with fewer than two colors reads no further")
+    func directGradientMapCalls() throws {
+        let original = try Pixels(grayRamp(), width: 32, height: 8)
+        let shader = { (colors: [Color]) in
+            ShaderLibrary.swiftShaders.ssGradientMap(.float2(32, 8), .colorArray(colors), .float(1))
+        }
+        let empty = try Pixels(grayRamp().colorEffect(shader([])), width: 32, height: 8)
+        #expect(empty.maxDifference(from: original) <= 1)
+        let single = try Pixels(grayRamp().colorEffect(shader([srgb(10, 200, 30)])), width: 32, height: 8)
+        #expect(single.all.allSatisfy { $0.isClose(to: RGBA(10, 200, 30)) })
+    }
 }

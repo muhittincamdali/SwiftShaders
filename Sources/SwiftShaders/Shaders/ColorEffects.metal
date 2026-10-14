@@ -65,7 +65,9 @@ using namespace metal;
 /// and the pattern keeps the average brightness of an area.
 [[ stitchable ]] half4 ssDither(float2 position, half4 color, float2 size, float levels) {
     const float bayer[16] = { 0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5 };
-    uint2 cell = uint2(floor(position)) % 4;
+    // Bitwise AND on signed integers gives 0...3 for negative positions too, where converting a
+    // negative float to an unsigned integer would be undefined.
+    int2 cell = int2(floor(position)) & 3;
     half threshold = half((bayer[cell.y * 4 + cell.x] + 0.5) / 16.0);
     half steps = half(levels) - 1.0h;
     half3 rgb = floor(ss::straight(color) * steps + threshold) / steps;
@@ -75,6 +77,11 @@ using namespace metal;
 /// Maps luminance onto a gradient through `count` colors (at least 2): black takes the first
 /// color, white the last. Blended with the original by `amount` (0...1).
 [[ stitchable ]] half4 ssGradientMap(float2 position, half4 color, float2 size, device const half4 *colors, int count, float amount) {
+    // The Swift API always passes at least two colors; a direct call might not, and reading
+    // colors[index + 1] would then read past the end of the array.
+    if (count < 2) {
+        return count == 1 ? ss::premultiplied(mix(ss::straight(color), ss::straight(colors[0]), half(amount)), color.a) : color;
+    }
     half3 rgb = ss::straight(color);
     float scaled = float(ss::luminance(rgb)) * float(count - 1);
     int index = clamp(int(floor(scaled)), 0, count - 2);
