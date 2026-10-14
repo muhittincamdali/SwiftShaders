@@ -5,14 +5,18 @@ extension ShaderLibrary {
     /// The Metal library that holds every SwiftShaders function.
     ///
     /// The view modifiers in this package call into this library for you. Use it directly when
-    /// you want one of the package's shader functions with SwiftUI's own effect modifiers:
+    /// you want one of the package's shader functions with SwiftUI's own effect modifiers or as
+    /// a fill:
     ///
     /// ```swift
-    /// Image(systemName: "sparkles")
-    ///     .colorEffect(ShaderLibrary.swiftShaders.ssSepia(.float(1)))
+    /// RoundedRectangle(cornerRadius: 16)
+    ///     .fill(ShaderLibrary.swiftShaders.ssCheckerboard(.float(10), .color(.white), .color(.gray)))
     /// ```
     ///
-    /// Function names start with `ss` so they never collide with shaders in your app.
+    /// Function names start with `ss` so they never collide with shaders in your app. Pass the
+    /// arguments in the order of the function's parameters after the ones SwiftUI supplies
+    /// (position, and color or layer); see <doc:HowEffectsAreDrawn>. A call whose arguments do
+    /// not match draws nothing.
     public static var swiftShaders: ShaderLibrary { ShaderLibrary.bundle(.module) }
 }
 
