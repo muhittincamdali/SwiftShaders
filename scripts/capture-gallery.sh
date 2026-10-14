@@ -2,24 +2,19 @@
 # Captures README screenshots of the ShaderGallery example app on an iPhone simulator.
 #
 # The script builds and installs the app, opens one screen with `-page <name>`, and takes a
-# simulator screenshot in light and dark appearance with a fixed status bar. Unlike the images
-# from generate-screenshots.sh, these show the effect running in a real app, with its controls.
+# simulator screenshot in light and dark appearance, cropped to the page title, the picture and
+# its controls. Unlike the images from generate-screenshots.sh, these show the effect running in
+# a real app.
 #
 # Usage: scripts/capture-gallery.sh [simulator name or UDID] [page]
-# Without arguments it uses the first available iPhone simulator and the "Halftone" page.
+# Without arguments it uses an "iPhone 17 Pro" simulator and the "Halftone" page. The crop below
+# is measured on that screen size (1206 x 2622 pixels); other devices need other numbers.
 # Output: docs/images/gallery-light.png and docs/images/gallery-dark.png
 set -euo pipefail
 
 repo_root="$(cd "$(dirname "$0")/.." && pwd)"
-device="${1:-}"
+device="${1:-iPhone 17 Pro}"
 page="${2:-Halftone}"
-if [[ -z "$device" ]]; then
-  device="$(xcrun simctl list devices available | grep -m1 -oE 'iPhone [^(]+' | sed 's/ *$//')"
-fi
-if [[ -z "$device" ]]; then
-  echo "No available iPhone simulator found." >&2
-  exit 1
-fi
 
 bundle_id="io.github.muhittincamdali.ShaderGallery"
 output_dir="$repo_root/docs/images"
@@ -42,9 +37,12 @@ app="$(find "$build_dir/Build/Products" -maxdepth 2 -name 'ShaderGallery.app' -p
 
 xcrun simctl boot "$device" 2>/dev/null || true
 xcrun simctl bootstatus "$device" -b >/dev/null
-xcrun simctl status_bar "$device" override --time 9:41 --batteryState charged --batteryLevel 100 \
-  --cellularBars 4 --wifiBars 3 --operatorName ""
 xcrun simctl install "$device" "$app"
+
+# The first launch after an install is slow; on a cold start the first screenshot caught the
+# launch animation, so open the app once before taking any.
+xcrun simctl launch --terminate-running-process "$device" "$bundle_id" -page "$page" >/dev/null
+sleep 6
 
 for appearance in light dark; do
   xcrun simctl ui "$device" appearance "$appearance"
@@ -52,9 +50,10 @@ for appearance in light dark; do
   sleep 4 # let the navigation push and the first frames draw
   file="$output_dir/gallery-$appearance.png"
   xcrun simctl io "$device" screenshot --type=png "$file" >/dev/null 2>&1
-  # Half the width of an iPhone 17 Pro screenshot keeps the README light; keep the top 680
-  # points of it, where the picture and its controls are.
-  sips --resampleWidth 603 "$file" >/dev/null
-  sips --cropToHeightWidth 680 603 --cropOffset 0 0 "$file" >/dev/null
+  # Keep the area from below the status bar to below the controls. sips treats a zero offset as
+  # "centered", so the crop starts one pixel in from the left and is two pixels narrower than
+  # the screen. Half the width keeps the README light.
+  sips --cropToHeightWidth 1450 1204 --cropOffset 170 1 "$file" >/dev/null
+  sips --resampleWidth 602 "$file" >/dev/null
   echo "$file"
 done
