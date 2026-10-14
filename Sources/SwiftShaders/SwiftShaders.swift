@@ -25,7 +25,8 @@ public enum SwiftShaders {
     /// The location of the compiled Metal library inside the package's resource bundle.
     ///
     /// The value is `nil` when the package was built by a tool that copies `.metal` files
-    /// without compiling them: `swift build` before Swift 6.4. Xcode always compiles them.
+    /// without compiling them: `swift build` with SwiftPM's native build system, the default
+    /// before Swift 6.4. Xcode, and `swift build` from Swift 6.4 on, compile them.
     public static var metalLibraryURL: URL? {
         Bundle.module.url(forResource: "default", withExtension: "metallib")
     }

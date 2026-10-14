@@ -12,7 +12,8 @@ let package = Package(
     ],
     targets: [
         // The .metal files in Shaders/ are compiled into the target's default.metallib by Xcode and
-        // by SwiftPM 6.4 or later. Older `swift build` versions copy them without compiling.
+        // by SwiftPM's Swift Build engine, the default build system from Swift 6.4. The older
+        // native build system copies them without compiling.
         .target(
             name: "SwiftShaders",
             path: "Sources/SwiftShaders",

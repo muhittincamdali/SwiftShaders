@@ -59,9 +59,10 @@ garbage.
 ### Check the build tool
 
 The effects live in `.metal` files that must be compiled into a Metal library inside the
-package's resource bundle. Xcode compiles them, and so does `swift build` from Swift 6.4 on.
-Older versions of `swift build` copy the files without compiling them; SwiftUI then finds no
-shader functions and does not draw views that have an effect.
+package's resource bundle. Xcode compiles them, and so does `swift build` from Swift 6.4 on,
+where SwiftPM's Swift Build engine is the default. With the older native build system,
+`swift build` copies the files without compiling them; SwiftUI then finds no shader functions
+and does not draw views that have an effect. Apps built with Xcode are never affected.
 
 ``SwiftShaders/SwiftShaders/isMetalLibraryAvailable`` tells you which case you are in, for
 example in a test:
