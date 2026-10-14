@@ -7,16 +7,17 @@ import Testing
 @MainActor
 @Suite("README samples")
 struct ReadmeSampleTests {
-    @Test("The quick start draws the symbol as a black-and-white halftone")
+    @Test("The quick start draws the symbol as blue dots on white paper")
     func quickStart() throws {
-        let pixels = try Pixels(QuickStartSample(), width: 200, height: 200)
+        let pixels = try Pixels(ContentView(), width: 200, height: 200)
         let drawn = pixels.all.filter { $0.alpha > 0 }
         #expect(drawn.count > 20_000)
-        // The halftone replaces the blue and cyan with black ink on white paper (both multiplied
-        // by the view's alpha, which keeps them gray).
-        #expect(drawn.allSatisfy { abs($0.red - $0.blue) <= 3 && abs($0.green - $0.blue) <= 3 })
+        // Every pixel mixes the blue ink with the white paper, so blue >= green >= red.
+        #expect(drawn.allSatisfy { $0.blue + 3 >= $0.green && $0.green + 3 >= $0.red })
+        // Inside the symbol there are ink dots and, between them, white paper that the solid blue
+        // symbol did not have.
         #expect(drawn.contains { $0.alpha == 255 && $0.red < 40 })
-        #expect(drawn.contains { $0.alpha == 255 && $0.red > 215 })
+        #expect(drawn.contains { $0.alpha == 255 && $0.red > 215 && $0.green > 215 })
     }
 
     @Test("The loading placeholder draws its shapes")
@@ -48,8 +49,9 @@ struct ReadmeSampleTests {
     @Test("The retro screen splits the colors of the text")
     func retroScreen() throws {
         let pixels = try Pixels(RetroScreenSample(), width: 320, height: 120)
-        // Cyan text whose blue channel moved away shows pure green at the edges of the letters.
-        #expect(pixels.all.contains { $0.green > 120 && $0.blue < 40 })
+        // Cyan text has as much green as blue. Where its blue channel moved away, the edges of the
+        // letters are much greener than blue.
+        #expect(pixels.all.contains { $0.green > $0.blue + 60 })
     }
 
     @Test("Calling the checkerboard shader directly fills the shape with two colors")

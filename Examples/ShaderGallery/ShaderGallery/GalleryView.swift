@@ -33,7 +33,7 @@ struct ReadmeSample: Identifiable {
     var id: String { name }
 
     @MainActor static let all: [ReadmeSample] = [
-        ReadmeSample(name: "Quick start", view: AnyView(QuickStartSample())),
+        ReadmeSample(name: "Quick start", view: AnyView(ContentView())),
         ReadmeSample(name: "Loading placeholder", view: AnyView(LoadingRowSample())),
         ReadmeSample(name: "Ripple on tap", view: AnyView(RippleCardSample())),
         ReadmeSample(name: "Dissolve transition", view: AnyView(DissolveTransitionSample())),

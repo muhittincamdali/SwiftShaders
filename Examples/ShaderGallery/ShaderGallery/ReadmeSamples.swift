@@ -7,14 +7,15 @@ import SwiftUI
 
 // MARK: - Quick start
 
-struct QuickStartSample: View {
+// The README's quick start pastes this view into a new app's ContentView.swift.
+struct ContentView: View {
     var body: some View {
         Image(systemName: "mountain.2.fill")
             .font(.system(size: 96))
             .foregroundStyle(.blue)
             .padding(40)
-            .background(.cyan.opacity(0.25), in: .rect(cornerRadius: 24))
-            .halftone(dotSize: 6)
+            .background(.blue.opacity(0.15), in: .rect(cornerRadius: 24))
+            .halftone(dotSize: 6, ink: .blue, paper: .white)
     }
 }
 
@@ -91,7 +92,7 @@ struct RetroScreenSample: View {
             .font(.system(size: 44, weight: .black, design: .monospaced))
             .foregroundStyle(.cyan)
             .padding(32)
-            .background(.black)
+            .background(Color(red: 0.02, green: 0.07, blue: 0.2))
             .chromaticAberration(offset: 2)
             .scanlines(spacing: 3, intensity: 0.4)
             .vignette(intensity: 0.7)
