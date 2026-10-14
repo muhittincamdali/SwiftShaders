@@ -149,6 +149,24 @@ struct ColorEffectTests {
         #expect((8..<16).allSatisfy { pixels[$0, 3].red == 255 })
     }
 
+    @Test("Dithering content drawn left of the view repeats the pattern from inside it")
+    func ditherNegativePositions() throws {
+        // The gray is 32 points wide in a 16-point view aligned to its trailing edge, so its left
+        // half is at x = -16..<0 where the effect reads the position.
+        let view = srgb(128, 128, 128)
+            .frame(width: 32, height: 8)
+            .frame(width: 16, height: 8, alignment: .trailing)
+            .dither(levels: 2)
+            .frame(width: 32, height: 8, alignment: .trailing)
+        let pixels = try Pixels(view, width: 32, height: 8)
+        #expect(pixels.all.allSatisfy { $0.red == 0 || $0.red == 255 })
+        for y in 0..<8 {
+            #expect((0..<16).allSatisfy { pixels[$0, y] == pixels[$0 + 16, y] })
+        }
+        let white = (0..<4).flatMap { y in (0..<4).map { x in pixels[x, y] } }.filter { $0.red == 255 }.count
+        #expect(white == 8)
+    }
+
     @Test("A gradient map maps black to the first color and white to the last")
     func gradientMapEnds() throws {
         let view = HStack(spacing: 0) {
