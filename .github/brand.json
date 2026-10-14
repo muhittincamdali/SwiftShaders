@@ -1,0 +1,39 @@
+{
+  "name": "SwiftShaders",
+  "repository": "muhittincamdali/SwiftShaders",
+  "tagline": {
+    "en": "Metal shader effects for SwiftUI views: color, blur, distortion, ripples and transitions.",
+    "tr": "SwiftUI görünümleri için Metal shader efektleri: renk, bulanıklık, bozulma, dalgalanma ve geçişler.",
+    "zh-CN": "适用于 SwiftUI 视图的 Metal 着色器效果：颜色、模糊、扭曲、涟漪和过渡。",
+    "ja": "SwiftUI ビュー向けの Metal シェーダー効果。色、ぼかし、歪み、波紋、トランジション。",
+    "ko": "SwiftUI 뷰를 위한 Metal 셰이더 효과: 색상, 블러, 왜곡, 물결, 전환.",
+    "es": "Efectos de shaders de Metal para vistas de SwiftUI: color, desenfoque, distorsión, ondas y transiciones.",
+    "de": "Metal-Shader-Effekte für SwiftUI-Views: Farbe, Unschärfe, Verzerrung, Wellen und Übergänge.",
+    "fr": "Des effets de shaders Metal pour les vues SwiftUI : couleur, flou, distorsion, ondulations et transitions.",
+    "pt-BR": "Efeitos de shaders Metal para views SwiftUI: cor, desfoque, distorção, ondulações e transições.",
+    "ru": "Эффекты шейдеров Metal для представлений SwiftUI: цвет, размытие, искажения, волны и переходы."
+  },
+  "tags": {
+    "en": ["SwiftUI", "Metal", "iOS · macOS", "No dependencies"],
+    "tr": ["SwiftUI", "Metal", "iOS · macOS", "Bağımlılık yok"],
+    "zh-CN": ["SwiftUI", "Metal", "iOS · macOS", "无依赖"],
+    "ja": ["SwiftUI", "Metal", "iOS · macOS", "依存関係なし"],
+    "ko": ["SwiftUI", "Metal", "iOS · macOS", "의존성 없음"],
+    "es": ["SwiftUI", "Metal", "iOS · macOS", "Sin dependencias"],
+    "de": ["SwiftUI", "Metal", "iOS · macOS", "Keine Abhängigkeiten"],
+    "fr": ["SwiftUI", "Metal", "iOS · macOS", "Sans dépendance"],
+    "pt-BR": ["SwiftUI", "Metal", "iOS · macOS", "Sem dependências"],
+    "ru": ["SwiftUI", "Metal", "iOS · macOS", "Без зависимостей"]
+  },
+  "motif": "code",
+  "buttons": ["start", "docs", "examples"],
+  "links": {
+    "docs": "https://muhittincamdali.github.io/SwiftShaders/documentation/swiftshaders/",
+    "examples": "Examples/"
+  },
+  "languages": ["en", "tr", "zh-CN", "ja", "ko", "es", "de", "fr", "pt-BR", "ru"],
+  "docc": {
+    "targets": ["SwiftShaders"]
+  },
+  "socialTheme": "dark"
+}
