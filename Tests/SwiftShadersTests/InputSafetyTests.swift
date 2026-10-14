@@ -25,6 +25,7 @@ struct InputSafetyTests {
             ("swirl", sampleOffset(of: base.swirl(radius: .infinity), in: size)),
             ("bulge", sampleOffset(of: base.bulge(radius: 1e12), in: size)),
             ("water", sampleOffset(of: base.water(amplitude: 1e12, time: .fixed(0)), in: size)),
+            ("loupe", sampleOffset(of: base.loupe(radius: .infinity), in: size)),
             ("chromaticAberration", sampleOffset(of: base.chromaticAberration(offset: 1e12), in: size)),
             ("glitch", sampleOffset(of: base.glitch(intensity: .infinity, time: .fixed(0)), in: size)),
             ("ripple", sampleOffset(of: base.ripple(origin: .zero, elapsedTime: 1, style: RippleStyle(amplitude: 1e12)), in: size)),

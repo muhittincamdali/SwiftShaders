@@ -70,6 +70,20 @@ struct DistortionEffectTests {
         #expect(magnified[1, 1] == original[1, 1])
     }
 
+    @Test("A loupe enlarges the area inside its circle and leaves the rest alone")
+    func loupe() throws {
+        let square = whiteSquare(side: 8)
+        let original = try Pixels(square, width: 32, height: 32)
+        // Radius 0.5 of 32 points is 16. At magnification 2 the square (12..<20) appears twice
+        // as large, 8..<24, and the corners outside the circle do not move.
+        let pixels = try Pixels(square.loupe(radius: 0.5, magnification: 2), width: 32, height: 32)
+        #expect(original[9, 16].red == 0 && pixels[9, 16].red > 200)
+        #expect(pixels[22, 16].red > 200 && pixels[25, 16].red < 50)
+        #expect(pixels[1, 1] == original[1, 1])
+        let unchanged = try Pixels(square.loupe(magnification: .nan), width: 32, height: 32)
+        #expect(unchanged.maxDifference(from: original) == 0)
+    }
+
     @Test("Water moves pixels by at most the amplitude and repeats for a fixed time")
     func water() throws {
         let view = whiteBar()

@@ -111,4 +111,49 @@ extension View {
             }
         ))
     }
+
+    /// Enlarges a circle of the view, like a magnifying glass held over it. Unlike
+    /// ``SwiftUICore/View/bulge(strength:radius:center:)``, the magnification is the same across
+    /// the whole circle and the circle has a sharp edge.
+    ///
+    /// Move the loupe with a drag:
+    ///
+    /// ```swift
+    /// @State private var point = UnitPoint.center
+    ///
+    /// var body: some View {
+    ///     GeometryReader { proxy in
+    ///         Image("map")
+    ///             .resizable()
+    ///             .loupe(center: point, magnification: 2.5)
+    ///             .gesture(DragGesture(minimumDistance: 0).onChanged { drag in
+    ///                 point = UnitPoint(
+    ///                     x: drag.location.x / proxy.size.width,
+    ///                     y: drag.location.y / proxy.size.height
+    ///                 )
+    ///             })
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// - Parameters:
+    ///   - center: The center of the loupe, as a fraction of the view's size.
+    ///   - radius: The loupe's radius, as a fraction of the view's shorter side.
+    ///   - magnification: How much larger the content appears, from 1 (no change) to 20.
+    nonisolated public func loupe(center: UnitPoint = .center, radius: Double = 0.25, magnification: Double = 2) -> some View {
+        let magnification = ShaderInput.clamped(magnification, to: 1...20)
+        return modifier(ShaderEffect(
+            kind: .distortion,
+            isEnabled: magnification > 1,
+            maxSampleOffset: { size in ShaderInput.sampleOffset(ShaderInput.radius(radius, in: size), in: size) },
+            shader: { size, _ in
+                ShaderLibrary.swiftShaders.ssLoupe(
+                    .float2(size),
+                    .float2(ShaderInput.position(center, in: size)),
+                    .float(ShaderInput.radius(radius, in: size)),
+                    .float(magnification)
+                )
+            }
+        ))
+    }
 }

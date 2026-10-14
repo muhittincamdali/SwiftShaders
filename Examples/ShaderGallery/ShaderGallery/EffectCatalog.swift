@@ -108,5 +108,8 @@ extension EffectDemo {
         EffectDemo(name: "Bulge", group: .distortion, parameter: "Strength", range: -1...1, initialValue: 0.6) { content, value, _ in
             AnyView(content.bulge(strength: value, radius: 0.45))
         },
+        EffectDemo(name: "Loupe", group: .distortion, parameter: "Magnification", range: 1...6, initialValue: 2.5) { content, value, _ in
+            AnyView(content.loupe(center: UnitPoint(x: 0.3, y: 0.62), radius: 0.32, magnification: value))
+        },
     ]
 }

@@ -46,3 +46,13 @@ using namespace metal;
     float y = sin(point.x + t * 1.1) * 0.6 + sin(point.y * 0.8 - point.x * 1.4 + t * 1.7) * 0.4;
     return position + amplitude * float2(x, y) * 0.70710678;
 }
+
+/// Shows the area around `center` enlarged by `magnification` inside a circle of `radius`
+/// points, like a magnifying glass held over the view.
+[[ stitchable ]] float2 ssLoupe(float2 position, float2 size, float2 center, float radius, float magnification) {
+    float2 offset = position - center;
+    if (length(offset) >= radius) {
+        return position;
+    }
+    return center + offset / magnification;
+}

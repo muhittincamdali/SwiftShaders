@@ -12,7 +12,7 @@ struct LibraryTests {
         "ssFilmGrain", "ssDither", "ssGradientMap", "ssShimmer",
         "ssPixelate", "ssChromaticAberration", "ssSketch", "ssEmboss", "ssSharpen", "ssHalftone",
         "ssKaleidoscope", "ssGlitch", "ssRipple", "ssProgressiveBlur",
-        "ssWave", "ssSwirl", "ssBulge", "ssWater",
+        "ssWave", "ssSwirl", "ssBulge", "ssWater", "ssLoupe",
         "ssCheckerboard", "ssStripes", "ssPlasma",
         "ssDissolve", "ssCircleReveal", "ssRadialWipe",
     ]

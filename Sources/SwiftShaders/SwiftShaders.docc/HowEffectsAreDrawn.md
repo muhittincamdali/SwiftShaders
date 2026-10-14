@@ -21,7 +21,7 @@ antialiased edges.
 ### Distortions
 
 A distortion effect returns the position whose color the pixel should show. The wave, water,
-swirl and bulge effects are distortions. They tell SwiftUI how far they move content through
+swirl, bulge and loupe effects are distortions. They tell SwiftUI how far they move content through
 `maxSampleOffset`, so SwiftUI can draw the view into a larger offscreen layer and content moved
 past an edge is not cut off. SwiftShaders limits that offset to the view's diagonal: an offset
 grows the offscreen layer on every side, and an unbounded one could allocate gigabytes for a
@@ -94,6 +94,7 @@ directly skips the argument checks described above. Most functions take the view
 | `ssWater` | distortion | size, time, amplitude, scale, speed |
 | `ssSwirl` | distortion | size, center, radius in points, angle in radians |
 | `ssBulge` | distortion | size, center, radius in points, strength |
+| `ssLoupe` | distortion | size, center, radius in points, magnification |
 | `ssPixelate` | layer | size, cell size |
 | `ssHalftone` | layer | size, cell size, angle in radians, ink color, paper color |
 | `ssSketch` | layer | size, strength, line width, line color, paper color |

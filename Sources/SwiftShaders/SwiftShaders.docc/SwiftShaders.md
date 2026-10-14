@@ -66,6 +66,7 @@ Motion is on, and the shaders' output is tested pixel by pixel on macOS and on a
 - ``SwiftUICore/View/water(amplitude:scale:speed:time:)``
 - ``SwiftUICore/View/swirl(angle:radius:center:)``
 - ``SwiftUICore/View/bulge(strength:radius:center:)``
+- ``SwiftUICore/View/loupe(center:radius:magnification:)``
 
 ### Ripples
 

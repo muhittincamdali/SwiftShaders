@@ -22,7 +22,7 @@ struct Screenshots {
 
     @Test("Effect grids", arguments: Appearance.allCases)
     func effectGrids(appearance: Appearance) throws {
-        let groups: [(EffectGroup, columns: Int)] = [(.color, 4), (.layer, 3), (.distortion, 4)]
+        let groups: [(EffectGroup, columns: Int)] = [(.color, 4), (.layer, 3), (.distortion, 5)]
         for (group, columns) in groups {
             var tiles: [AnyView] = []
             if group == .color {
