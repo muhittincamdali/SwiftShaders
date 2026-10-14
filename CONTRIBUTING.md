@@ -1,80 +1,81 @@
-# Contributing to SwiftRouter
+# Contributing
 
-First off, thank you for considering contributing to SwiftRouter! It's people like you that make SwiftRouter such a great tool.
+Thanks for taking the time to improve SwiftShaders.
 
-## Code of Conduct
+## Reporting bugs
 
-This project and everyone participating in it is governed by our Code of Conduct. By participating, you are expected to uphold this code.
+Open an issue with:
 
-## How Can I Contribute?
+- the modifier and the arguments you used,
+- what you expected and what happened (a screenshot helps for visual bugs),
+- the kind of view the effect is on (image, text, shape, a stack of views),
+- platform and OS version (iOS simulator/device or macOS) and Xcode version.
 
-### Reporting Bugs
+If an effect draws nothing at all, check `SwiftShaders.isMetalLibraryAvailable` first: it is
+`false` when the build tool did not compile the shaders.
 
-Before creating bug reports, please check the existing issues as you might find out that you don't need to create one. When you are creating a bug report, please include as many details as possible:
+## Pull requests
 
-- **Use a clear and descriptive title**
-- **Describe the exact steps which reproduce the problem**
-- **Provide specific examples to demonstrate the steps**
-- **Describe the behavior you observed after following the steps**
-- **Explain which behavior you expected to see instead and why**
-- **Include Swift version and OS version**
+1. Fork the repository and branch from `main`.
+2. Keep each pull request focused on one change.
+3. Run the tests on both platforms:
 
-### Suggesting Enhancements
+    ```sh
+    swift test                                    # needs Swift 6.4 to compile the shaders
+    xcodebuild test -scheme SwiftShaders -destination 'platform=macOS'
+    xcodebuild test -scheme SwiftShaders \
+      -destination 'platform=iOS Simulator,name=iPhone 17'
+    ```
 
-Enhancement suggestions are tracked as GitHub issues. When creating an enhancement suggestion, please include:
+4. If you change a README code sample, change the copy in
+   `Examples/ShaderGallery/ShaderGallery/ReadmeSamples.swift` as well. That file is what gets
+   compiled: by the example app, and by `swift test` through the symlink
+   `Tests/SwiftShadersTests/ReadmeSamples.swift`. Build the app with:
 
-- **Use a clear and descriptive title**
-- **Provide a step-by-step description of the suggested enhancement**
-- **Provide specific examples to demonstrate the steps**
-- **Describe the current behavior and explain which behavior you expected to see instead**
-- **Explain why this enhancement would be useful**
+    ```sh
+    cd Examples/ShaderGallery
+    xcodebuild build -scheme ShaderGallery -destination 'generic/platform=iOS Simulator'
+    ```
 
-### Pull Requests
+5. If an effect looks different after your change, regenerate the README images with
+   `scripts/generate-screenshots.sh`, and the app screenshots with
+   `scripts/capture-gallery.sh` if the gallery changed. The landscape in the images is drawn
+   with gradients, which SwiftUI dithers slightly differently each time, so commit only the
+   images whose content changed.
+6. `README.md` has translations (`README.<language>.md`). Each one records the version of
+   `README.md` it follows, and CI fails while a translation is behind. If you change `README.md`
+   and cannot update the translations, say so in the pull request and they will be updated
+   before it is merged.
 
-1. Fork the repo and create your branch from `main`
-2. If you've added code that should be tested, add tests
-3. If you've changed APIs, update the documentation
-4. Ensure the test suite passes
-5. Make sure your code follows the existing style (SwiftLint)
-6. Issue that pull request!
+## Adding an effect
 
-## Development Setup
+1. Write the Metal function in the file in `Sources/SwiftShaders/Shaders/` for its kind
+   (color, distortion, layer, fill or transition). Mark it `[[ stitchable ]]`, start its name
+   with `ss`, and take the view's size as the first argument after the ones SwiftUI supplies.
+   Layer effects that compare neighbors read through `ss::clampInto`, so they never sample
+   outside the view. Loops must have a fixed number of steps.
+2. Add the modifier in `Sources/SwiftShaders/Effects/` (or `Fills/`, `Transitions/`). Pass
+   every argument through `ShaderInput` first, document each parameter's range, and give a
+   distortion or a layer effect that moves content a `maxSampleOffset` built with
+   `ShaderInput.sampleOffset(_:in:)`.
+3. Add the function name to `LibraryTests.expectedFunctions`, a test that renders the effect
+   and checks the pixels, and a case in `InputSafetyTests` for NaN and huge arguments.
+4. Add the effect to `EffectCatalog.swift` in the example app, list it in the DocC landing page
+   (`SwiftShaders.docc/SwiftShaders.md`) and in the argument table of
+   `HowEffectsAreDrawn.md`.
 
-```bash
-# Clone your fork
-git clone https://github.com/YOUR_USERNAME/SwiftRouter.git
+Test sources must be drawn without gradients (see `grayRamp()` and `colorField()` in
+`Tests/SwiftShadersTests/Support/Rendering.swift`): SwiftUI dithers gradients, so two
+renderings of one gradient can differ.
 
-# Navigate to the project
-cd SwiftRouter
+## Code style
 
-# Open in Xcode
-open Package.swift
-
-# Run tests
-swift test
-```
-
-## Style Guide
-
-- Follow [Swift API Design Guidelines](https://swift.org/documentation/api-design-guidelines/)
-- Use SwiftLint for code style consistency
-- Write meaningful commit messages following [Conventional Commits](https://www.conventionalcommits.org/)
-- Document public APIs with DocC-compatible comments
-
-## Commit Messages
-
-We follow the [Conventional Commits](https://www.conventionalcommits.org/) specification:
-
-- `feat:` A new feature
-- `fix:` A bug fix
-- `docs:` Documentation only changes
-- `style:` Code style changes (formatting, semicolons, etc)
-- `refactor:` Code change that neither fixes a bug nor adds a feature
-- `test:` Adding missing tests
-- `chore:` Changes to the build process or auxiliary tools
-
-Example: `feat(deeplink): add universal link support`
+- Follow the [Swift API Design Guidelines](https://www.swift.org/documentation/api-design-guidelines/).
+- The package builds in the Swift 6 language mode; new code should not add warnings.
+- Document public API with DocC comments (`///`).
+- Commit messages follow [Conventional Commits](https://www.conventionalcommits.org/)
+  (`feat:`, `fix:`, `docs:`, `test:`, `refactor:`, `ci:`, `chore:`).
 
 ## License
 
-By contributing, you agree that your contributions will be licensed under the MIT License.
+By contributing you agree that your contributions are licensed under the MIT License.
