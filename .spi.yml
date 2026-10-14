@@ -1,0 +1,8 @@
+version: 1
+builder:
+  configs:
+    - platform: ios
+      scheme: SwiftShaders
+      documentation_targets: [SwiftShaders]
+    - platform: macos-xcodebuild
+      scheme: SwiftShaders
